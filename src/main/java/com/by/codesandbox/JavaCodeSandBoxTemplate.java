@@ -90,8 +90,9 @@ public class JavaCodeSandBoxTemplate implements CodeSandBox {
      */
     public List<ExecuteMessage> runFile(List<String> inputList, File userCodeFile) {
         List<ExecuteMessage> executeMessageList = new ArrayList<>();
+        String parentFilePath = userCodeFile.getParentFile().getAbsolutePath();
         for (String input : inputList) {
-            String runCommand = String.format("java -Xmx256m -Dfile.encoding=UTF-8 -cp %s Main %s", userCodeFile.getAbsolutePath(), input);
+            String runCommand = String.format("java -Xmx256m -Dfile.encoding=UTF-8 -cp %s Main %s", parentFilePath, input);
             ExecuteMessage runMessage = ProcessUtil.runProcess(runCommand, "run");
             executeMessageList.add(runMessage);
         }

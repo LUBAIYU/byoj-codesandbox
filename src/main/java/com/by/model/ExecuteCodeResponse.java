@@ -2,6 +2,7 @@ package com.by.model;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,7 +11,7 @@ import java.util.List;
  * @author lzh
  */
 @Data
-public class ExecuteCodeResponse {
+public class ExecuteCodeResponse implements Serializable {
     /**
      * 执行状态
      */

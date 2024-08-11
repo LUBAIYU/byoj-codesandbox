@@ -1,8 +1,8 @@
 package com.by.model;
 
-import lombok.Builder;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -11,8 +11,7 @@ import java.util.List;
  * @author lzh
  */
 @Data
-@Builder
-public class ExecuteCodeRequest {
+public class ExecuteCodeRequest implements Serializable {
     /**
      * 代码
      */
