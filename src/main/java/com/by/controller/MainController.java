@@ -1,16 +1,17 @@
 package com.by.controller;
 
-import com.by.codesandbox.JavaNativeCodeSandBox;
+import com.by.codesandbox.CodeSandBox;
+import com.by.factory.LanguageFactory;
 import com.by.model.ExecuteCodeRequest;
 import com.by.model.ExecuteCodeResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -28,8 +29,8 @@ public class MainController {
 
     public static final String AUTH_REQUEST_SECRET = "byoj-secret";
 
-    @Resource
-    private JavaNativeCodeSandBox javaNativeCodeSandBox;
+    @Value("${codesandbox.type}")
+    private String type;
 
     @PostMapping("/execute")
     public ExecuteCodeResponse executeCode(@RequestBody ExecuteCodeRequest executeCodeRequest, HttpServletRequest request, HttpServletResponse response) {
@@ -43,6 +44,9 @@ public class MainController {
             response.setStatus(HttpStatus.BAD_REQUEST.value());
             return null;
         }
-        return javaNativeCodeSandBox.executeCode(executeCodeRequest);
+        // 使用语言工厂选择对应的代码沙箱
+        String language = executeCodeRequest.getLanguage();
+        CodeSandBox codeSandBox = LanguageFactory.newInstance(language, type);
+        return codeSandBox.executeCode(executeCodeRequest);
     }
 }

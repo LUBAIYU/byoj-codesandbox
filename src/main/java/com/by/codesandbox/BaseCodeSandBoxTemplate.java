@@ -21,7 +21,7 @@ import java.util.UUID;
  * @author lzh
  */
 @Slf4j
-public class JavaCodeSandBoxTemplate implements CodeSandBox {
+public abstract class BaseCodeSandBoxTemplate implements CodeSandBox {
 
     /**
      * 全局代码保存目录

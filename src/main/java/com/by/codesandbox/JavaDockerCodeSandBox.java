@@ -26,7 +26,7 @@ import java.util.concurrent.TimeUnit;
  * @author lzh
  */
 @Slf4j
-public class JavaDockerCodeSandBox extends JavaCodeSandBoxTemplate {
+public class JavaDockerCodeSandBox extends BaseCodeSandBoxTemplate {
 
     /**
      * 超时时间

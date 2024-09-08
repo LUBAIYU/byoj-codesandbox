@@ -1,2 +1,5 @@
 server:
   port: 9000
+# 配置代码沙箱类型（native,docker）
+codesandbox:
+  type: native

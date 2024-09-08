@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  * @author lzh
  */
 @Component
-public class JavaNativeCodeSandBox extends JavaCodeSandBoxTemplate {
+public class JavaNativeCodeSandBox extends BaseCodeSandBoxTemplate {
 
     @Override
     public ExecuteCodeResponse executeCode(ExecuteCodeRequest executeCodeRequest) {
